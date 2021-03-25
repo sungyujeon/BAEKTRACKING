@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'home' %}">Baektracking</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+      <div class="navbar-nav justify-content-between w-100">
+        <div class="d-flex">
+          <a class="nav-link active" href="{% url 'home' %}">Home</a>
+          <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
+        </div>
+        <ul class="navbar-nav align-items-center">
+          {% if request.user.is_authenticated %}
+            {% if request.user.profile_image %}
+            <li>
+              <img class="profile-image" src="{{ request.user.profile_image.url }}" alt="{{ request.user.profile_image }}">
+            </li>
+            {% endif %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{ request.user.username }}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="{% url 'accounts:profile' pk=request.user.pk %}">Profile</a></li>
+              <li><a class="dropdown-item" href="{% url 'accounts:logout' %}">Logout</a></li>
+            </ul>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:signup' %}">Signup</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+  </div>
+</nav>
