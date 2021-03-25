@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{{ request.user.username }}의 프로필입니다</h1>
+  <a href="{% url 'accounts:update' pk=request.user.pk %}" class="btn btn-primary">Update</a>
+{% endblock content %}
