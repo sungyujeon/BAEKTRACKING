@@ -7,7 +7,7 @@
 ## 기능
 
 - [x] 전체 문제 크롤링 - DB 저장
-- [ ] 회원별 문제 크롤링 - DB 저장
+- [x] 회원별 문제 크롤링 - DB 저장
 - [ ] 일별 문제 크롤링
 
 문제 클릭 시 해당 문제를 푼 사람 리스트 + 코드
@@ -20,13 +20,15 @@
 
 ## Database
 
-User - username, password, baekjoon_id, profile_image
+> 향후 ERD로 업데이트
+>
+> <small>(임시) ['model name'] - ['field name']</small>
 
-Problem - number, difficulty
+[User] - username, password, baekjoon_id, profile_image
 
+[Problem] - number, difficulty
 
-
-Problem - User(M:N), solved_date, solved_code(NULL) - 코드요청(?)
+[SolvedProblems] - solved_code, solved_date, problem_id(FK), user_id(FK)
 
 
 
@@ -34,4 +36,5 @@ Problem - User(M:N), solved_date, solved_code(NULL) - 코드요청(?)
 
 1. problems index
    - [ ] 문제(pagination), 문제 티어, 푼 사람 리스트
-   - 
+   
+     

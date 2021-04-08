@@ -11,8 +11,6 @@ from django.views.decorators.http import require_http_methods, require_POST, req
 from .forms import CustomUserCreationForm, CustomUserChangeForm
 
 
-
-
 User = get_user_model()
 
 @require_http_methods(['GET', 'POST'])
