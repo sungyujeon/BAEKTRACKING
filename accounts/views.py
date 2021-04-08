@@ -93,9 +93,9 @@ def update(request, *args, **kwargs):
 
         
 def profile(request, *args, **kwargs):
-    user_info = get_object_or_404(User, pk=kwargs.get('pk'))
+    user_info = get_object_or_404(get_user_model(), pk=kwargs.get('pk'))
     context = {
-        'user_info': user_info
+        'user_info': user_info,
     }
     return render(request, 'accounts/profile.html', context)
 

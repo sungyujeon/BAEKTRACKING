@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>{{ request.user.username }}의 프로필입니다</h1>
+  <h1>{{ user_info.username }}의 프로필입니다</h1>
   
-  {% if request.user %}
-  <a href="{% url 'accounts:update' pk=request.user.pk %}" class="btn btn-primary">Update</a>
-  <a href="{% url 'problems:crawl_a_user_solved_problems' pk=request.user.pk %}" class="btn btn-warning">내가 푼 문제 크롤링하기</a>
+  {% if request.user == user_info %}
+    <a href="{% url 'accounts:update' pk=request.user.pk %}" class="btn btn-primary">Update</a>
+    <a href="{% url 'problems:crawl_a_user_solved_problems' user_info.baekjoon_id %}" class="btn btn-warning">내가 푼 문제 크롤링하기</a>
+  {% else %}
+    <p>(다른 사용자의 프로필)-test code</p>
+  {% endif %}
 {% endblock content %}
