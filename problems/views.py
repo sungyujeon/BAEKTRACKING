@@ -3,12 +3,19 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_safe, require_POST, require_http_methods
 from .models import Problem
-from . modules import Crawling
-from bs4 import BeautifulSoup
-import requests
+from .modules import Crawling
 
+@require_safe
 def index(request):
-    return render(request, 'problems/index.html')
+    # 전체 문제 번호
+    problem_numbers = Problem.objects.all()
+
+    context = {
+        'problem_numbers': problem_numbers,
+        
+    }
+    return render(request, 'problems/index.html', context)
+
 
 # =================================모든 회원의 푼 문제 크롤링=================================
 @require_safe
