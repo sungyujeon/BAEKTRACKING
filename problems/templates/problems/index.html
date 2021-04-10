@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- index.js -->
+<script src="{% static 'problems/js/index.js' %}"></script>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+
+  <a href="{% url 'problems:crawl_all_users_solved_problems' %}" class="btn btn-primary">사용자가 푼 문제 db에 담기</a>
+  <hr>
+
+  <!-- table -->
+  <div class="container">
+    <div class="card shadow mb-4">
+      <!-- card header -->
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+      </div>
+
+      <!-- card body -->
+      <div class="card-body">
+        <div class="table-responsive">
+          
+          <!-- table -->
+          <table id="problem_list_table" class="table table-bordered">
+            <thead>
+              <tr>
+                  <th>문제 번호</th>
+                  <th>문제를 푼 사람들</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Row 1 Data 1</td>
+                <td>Row 1 Data 2</td>
+              </tr>
+              <tr>
+                <td>Row 2 Data 1</td>
+                <td>Row 2 Data 2</td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- table end -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content%}

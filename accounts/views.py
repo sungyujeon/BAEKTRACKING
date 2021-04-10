@@ -11,8 +11,6 @@ from django.views.decorators.http import require_http_methods, require_POST, req
 from .forms import CustomUserCreationForm, CustomUserChangeForm
 
 
-
-
 User = get_user_model()
 
 @require_http_methods(['GET', 'POST'])
@@ -93,9 +91,9 @@ def update(request, *args, **kwargs):
 
         
 def profile(request, *args, **kwargs):
-    user_info = get_object_or_404(User, pk=kwargs.get('pk'))
+    user_info = get_object_or_404(get_user_model(), pk=kwargs.get('pk'))
     context = {
-        'user_info': user_info
+        'user_info': user_info,
     }
     return render(request, 'accounts/profile.html', context)
 
