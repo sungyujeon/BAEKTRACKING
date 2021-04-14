@@ -6,7 +6,7 @@
     <p>
       {{ problem_number.number }} : 
       {% for solvedUser in problem_number.solvedUsers.all %}
-        {{ solvedUser|tag|safe }} 
+        {{ solvedUser|tag:problem_number.number|safe }}
       {% endfor %}
     </p>
   {% endfor %}

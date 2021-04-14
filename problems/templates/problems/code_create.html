@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>code_create</h1>
+  <form action="{% url 'problems:register_code' solver.username problem.number %}" method="POST">
+    {% csrf_token %}
+    <div>
+      <textarea name="solved_code" rows="20" cols="100"></textarea>
+    </div>
+    <input type="submit" class="btn btn-primary" value="등록하기">
+  </form>
+{% endblock content %}

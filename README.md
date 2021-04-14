@@ -33,6 +33,10 @@
 
 
 
+> username, problem_number도 pk어야 함 >> username을 통해 profile에 접근하고, problem_number를 통해 problem에 접근하기 때문
+
+
+
 ## 페이지
 
 1. problems index
