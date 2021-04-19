@@ -2,7 +2,10 @@
 
 {% block content %}
   <h1>{{ user_info.username }}의 프로필입니다</h1>
-  
+  {% if request.user.username == 'admin' %}
+    <a href="{% url 'problems:crawl_all_users_solved_problems' %}" class="btn btn-primary">사용자가 푼 문제 db에 담기</a>
+    <hr>
+  {% endif %}
   {% if request.user == user_info %}
     <a href="{% url 'accounts:update' pk=request.user.pk %}" class="btn btn-primary">Update</a>
     <a href="{% url 'problems:crawl_a_user_solved_problems' user_info.baekjoon_id %}" class="btn btn-warning">내가 푼 문제 크롤링하기</a>
