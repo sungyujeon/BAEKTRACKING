@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <link rel="stylesheet"
+        href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <h1>code.html</h1>
+  <p>problem_number : {{ problem.number }}</p>
+  <p>solver : {{ solver }}</p>
+  
+  {% if solvedProblem.solved_code %}
+    <!-- code -->
+    <hr>
+    <p>solved_problem</p>
+    <div id="code">
+      <pre><code class="python3">
+        {{ solvedProblem.solved_code }}
+      </code></pre>
+    </div>
+    {% if request.user == solver %}
+      <a href="{% url 'problems:update_code' solver problem.number %}" class="btn btn-primary">수정하기</a>
+    {% endif %}
+  {% else %}
+    {% if request.user == solver %}
+      <p>등록된 코드가 없습니다. 코드를 등록해주세요.</p>
+      <a class="btn btn-primary" href="{% url 'problems:register_code' solver problem.number %}">등록하기</a>
+    {% else %}
+      <p>등록된 코드가 없습니다.</p>
+    {% endif%}
+  {% endif %}
+
+{% endblock content %}
